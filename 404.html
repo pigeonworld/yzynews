@@ -2,19 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/yzynews/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>YZY News</title>
     <script>
-        // Redirect 404s to the base URL so React Router can handle routing
-        const path = window.location.pathname.replace(/^\/yzynews/, '');
-        if (path !== '/' && !path.includes('.')) {
-            window.location.href = '/yzynews/?redirect=' + encodeURIComponent(path);
-        }
+        // Store the path and redirect to home
+        const path = window.location.pathname;
+        sessionStorage.redirect = path;
+        window.location.href = '/yzynews/';
     </script>
 </head>
 <body>
-    <div id="root"></div>
-    <script type="module" src="/yzynews/src/main.jsx"></script>
+    Redirecting...
 </body>
 </html>
