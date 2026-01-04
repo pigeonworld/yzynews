@@ -5,10 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>YZY News</title>
     <script>
-        // Store the path and redirect to home
+        // If path doesn't start with /yzynews/, redirect to /yzynews/ + path
         const path = window.location.pathname;
-        sessionStorage.redirect = path;
-        window.location.href = '/yzynews/';
+        if (!path.startsWith('/yzynews/')) {
+            const newPath = '/yzynews' + path;
+            sessionStorage.redirect = newPath;
+            window.location.href = '/yzynews/';
+        } else {
+            sessionStorage.redirect = path;
+            window.location.href = '/yzynews/';
+        }
     </script>
 </head>
 <body>
