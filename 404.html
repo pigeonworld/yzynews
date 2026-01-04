@@ -5,15 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>YZY News</title>
     <script>
-        // If path doesn't start with /yzynews/, redirect to /yzynews/ + path
+        // Redirect to /yzynews/ so React Router handles routing
         const path = window.location.pathname;
         if (!path.startsWith('/yzynews/')) {
-            const newPath = '/yzynews' + path;
-            sessionStorage.redirect = newPath;
-            window.location.href = '/yzynews/';
-        } else {
-            sessionStorage.redirect = path;
-            window.location.href = '/yzynews/';
+            // Remove leading /yzynews if it exists somehow, then redirect
+            const cleanPath = path.replace(/^\/yzynews/, '');
+            window.location.href = '/yzynews/' + cleanPath.slice(1);
         }
     </script>
 </head>
